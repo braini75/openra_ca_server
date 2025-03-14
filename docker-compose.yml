@@ -1,0 +1,30 @@
+services:
+  openra-server:
+    image: ghcr.io/braini75/openra_ca_server:latest
+    user: "1000:1000"  # UID:GID
+    #build: .
+    environment:
+      Name: "Chaos Dedicated CA Server"
+      Mod: "ca"
+      Map: ""
+      ListenPort: "1234"
+      AdvertiseOnline: "False"
+      Password: ""
+      RecordReplays: "False"
+      RequireAuthentication: "False"
+      ProfileIDBlacklist: ""
+      ProfileIDWhitelist: ""
+      EnableSingleplayer: "False"
+      EnableSyncReports: "False"
+      EnableGeoIP: "True"
+      EnableLintChecks: "True"
+      ShareAnonymizedIPs: "True"
+      FloodLimitJoinCooldown: "5000"
+      SupportDir: ""
+    ports:
+      - "1234:1234"
+    volumes:
+      - "openra_data:/home/openra/.openra"
+
+volumes:
+  openra_data:
