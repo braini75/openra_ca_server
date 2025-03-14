@@ -1,0 +1,30 @@
+name: Test Docker Image CI
+description: Test and run the Docker image on every commit
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build_check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build and Test Docker image
+      id: build_check
+      run: |
+        docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
+        docker run -d --name openra_test ghcr.io/${{ github.repository }}:${{ github.sha }}
+        sleep 10
+        docker logs openra_test | grep "Starting dedicated server"
+        docker stop openra_test
+        docker rm openra_test

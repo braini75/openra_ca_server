@@ -1,4 +1,4 @@
-[![Test Docker image CI](https://github.com/braini75/openra_ca_server/actions/workflows/commit-check.yaml/badge.svg)](https://github.com/braini75/openra_ca_server/actions/workflows/commit-check.yaml)
+[![Docker Image](https://github.com/braini75/openra_ca_server/actions/workflows/commit-check.yaml/badge.svg)](https://github.com/braini75/openra_ca_server/actions/workflows/commit-check.yaml)
 
 # Dedicated Docker Server for OpenRA Combined Arms Mod
 
